@@ -176,6 +176,7 @@ class TransportTest extends TestCase
             ->method('TriggerCampaignForUserWithResult')
             ->with($this->equalTo([
                 'List' => $listId,
+                'ListID' => $listId,
                 'UserID' => $userId,
                 'GateName' => $campaign,
                 'InputData' => $inputData,
@@ -190,6 +191,7 @@ class TransportTest extends TestCase
                     $this->equalTo(
                         [
                             'List' => $listId,
+                            'ListID' => $listId,
                             'UserID' => $userId,
                             'GateName' => $campaign,
                             'Actioncode' => $actionProperties['Actioncode'],
@@ -225,7 +227,7 @@ class TransportTest extends TestCase
 
         $transport = new Transport($client, $listName, $campaign);
         $transport->setLogger($logger);
-        $result = $transport->TriggerCampaignForUserWithResult($userId, $inputData);
+        $result = $transport->triggerCampaignForUserWithResult($userId, $inputData);
 
         $this->assertEquals($TriggerCampaignResult, $result);
     }
@@ -255,7 +257,7 @@ class TransportTest extends TestCase
 
         $transport = new Transport($client, $listName, $campaign);
         $transport->setLogger($logger);
-        $result = $transport->TriggerCampaignForUserAndActionListItemWithResult($userId, $inputData, $actionProperties);
+        $result = $transport->triggerCampaignForUserAndActionListItemWithResult($userId, $inputData, $actionProperties);
 
         $this->assertEquals($TriggerCampaignResult, $result);
     }
@@ -285,7 +287,7 @@ class TransportTest extends TestCase
 
         $this->expectException('\Exception');
 
-        $result = $transport->TriggerCampaignForUserWithResult($userId, $inputData);
+        $result = $transport->triggerCampaignForUserWithResult($userId, $inputData);
     }
 
     protected function buildClientForSubscribe($listId, $listName, $campaign, $user, $userProperties, $GetUserByFilterResponseCode, $CreateUserResponseCode)
