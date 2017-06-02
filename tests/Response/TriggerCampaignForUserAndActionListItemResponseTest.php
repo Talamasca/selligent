@@ -8,23 +8,19 @@
  * file that was distributed with this source code.
  */
 namespace Mediapart\Selligent\Tests\Response;
-
-use PHPUnit\Framework\TestCase;
-
 use Mediapart\Selligent\Response;
-use Mediapart\Selligent\Response\TriggerCampaignForUserWithResultResponse;
+use Mediapart\Selligent\Response\TriggerCampaignForUserAndActionListItemResponse;
 /**
  *
  */
-class TriggerCampaignForUserWithResultResponseTest extends TestCase
+class TriggerCampaignForUserAndActionListItemResponseTest extends \PHPUnit_Framework_TestCase
 {
     /**
      *
      */
     public function testResponse()
     {
-        $response = new TriggerCampaignForUserWithResultResponse();
+        $response = new TriggerCampaignForUserAndActionListItemResponse();
         $this->assertEquals(Response::ERROR_NORESULT, $response->getCode());
-        $this->assertEquals('', $response->getResult());
     }
 }
